@@ -43,7 +43,7 @@ public partial class index : System.Web.UI.Page
 
         if (f_name1 != "" && f_name2 != "" && f_name4 != "")
         {
-            //debut dropcategori DropDownList1.Items.FindByValue
+           //debut dropcategori DropDownList1.Items.FindByValue
 
      
             if (DropDownList2.SelectedItem.Value == "1" )
