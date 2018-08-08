@@ -92,8 +92,6 @@ public partial class index : System.Web.UI.Page
 
             }
             //end if catego
-
-
         }
         else
         {
