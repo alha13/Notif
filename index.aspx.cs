@@ -37,7 +37,7 @@ public partial class index : System.Web.UI.Page
         string f_name4 = this.TextBox4.Text;
        // string f_name5 = this.TextBox1.Text;
        // string f_name5 = "a";
-        string f_name6 = "ab";
+        string f_name6 = DropDownList1.SelectedItem.Text;
 
         string strname = FileUpload1.FileName.ToString();
         FileUpload1.PostedFile.SaveAs(Server.MapPath("~/upload/") + strname);
@@ -319,7 +319,6 @@ public partial class index : System.Web.UI.Page
             //        LICENCE 2 ----------------------------- debut dropcategori DropDownList1.Items.FindByValue 
             if (DropDownList2.SelectedItem.Value == "1")
             {
-
 
                 //try
                 //{
