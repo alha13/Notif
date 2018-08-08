@@ -53,26 +53,24 @@
       <li class="list-group-item">
         <%--<br />--%>
         <asp:Label ID="Label6" runat="server" Text="Niveau :" Font-Bold="True"></asp:Label>
-        <asp:DropDownList ID="DropDownList2" runat="server" style="margin-left: 31px" Height="35px" Width="188px" OnTextChanged ="DropDownList_TextChange">
+        <asp:DropDownList ID="DropDownList2" runat="server" style="margin-left: 31px" Height="35px" Width="188px" AutoPostBack ="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
             <asp:ListItem></asp:ListItem>
-            <asp:ListItem  Value="1" >Licence 1</asp:ListItem>
+            <asp:ListItem  Value="1" Text="Licence 1" ></asp:ListItem>
             <asp:ListItem Value="2">Licence 2</asp:ListItem>
             <asp:ListItem Value="3">Licence 3</asp:ListItem>
         </asp:DropDownList>
-          <asp:RadioButton ID="RadioButton1" runat="server" />
+    
           <br />
     </li>
     <li class="list-group-item">
         <%--<br />--%>
         <asp:Label ID="Label1" runat="server" Text="Catégories :  " Font-Bold="True"></asp:Label>
-        <asp:DropDownList ID="DropDownList1" runat="server" style="margin-left: 5px" Width="185px" Visible="False">
+
+        <asp:DropDownList ID="DropDownList1" runat="server" style="margin-left: 5px" Width="185px" AutoPostBack="true">
        <%--     <asp:ListItem>Algebre</asp:ListItem>--%>
-            <asp:ListItem Text ="cc"  Value = "2" ></asp:ListItem>
+           
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList3" runat="server" style="margin-left: 5px" Width="185px">
-       <%--     <asp:ListItem>Algebre</asp:ListItem>--%>
-            <asp:ListItem Text ="analyse"  Value = "2" ></asp:ListItem>
-        </asp:DropDownList>
+      
 
     </li>
 
@@ -117,7 +115,9 @@
   <div >
       <asp:Button ID="Btn_save" runat="server"  OnClick="btn_save_Click"  style="margin-left: auto;margin-top: 20px;" Text="Envoyer"  Width="126px" />
   </div>
+   <table style="width:100%">
   <asp:Label ID="lbl_msg" runat="server" Text=""></asp:Label>
+    </table>
  </div>
 
 
@@ -129,7 +129,6 @@
 </div>
 
        &nbsp;</div>
-
 
 
     </div>

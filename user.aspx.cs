@@ -72,7 +72,6 @@ this.connection = new MySqlConnection(connectionString);
                 {
                     // Ouverture de la connexion SQL
                     this.connection.Open();
-                    //Label1.Text = id;
                     cmd.CommandText = "UPDATE licence_1 SET algebre_l1 = @1 WHERE id_l1 = @id";
                     cmd.Parameters.AddWithValue("@1", 1);
                     cmd.Parameters.AddWithValue("@id", id);
