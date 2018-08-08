@@ -11,12 +11,6 @@ using System.Net;
 public partial class index : System.Web.UI.Page
 {
    
-        //  lbl_msg.Text = "OOOK";
-        //DropDownList1.Items.Add(new ListItem { Text = "A", Value = "1" });
-        //DropDownList1.Items.Add(new ListItem { Text = "AX", Value = "2" });
-
-
-
     private MySqlConnection connection;
     // Méthode pour initialiser la connexion    
     private void InitConnexion()
@@ -32,6 +26,7 @@ public partial class index : System.Web.UI.Page
     }
 
     //Méthode appellé lors du clique    
+
     protected void btn_save_Click(object sender, EventArgs e)
     {
 
@@ -41,7 +36,7 @@ public partial class index : System.Web.UI.Page
         string f_name2 = this.TextBox2.Text;
         string f_name4 = this.TextBox4.Text;
        // string f_name5 = this.TextBox1.Text;
-        string f_name5 = "a";
+       // string f_name5 = "a";
         string f_name6 = "ab";
 
         string strname = FileUpload1.FileName.ToString();
@@ -75,86 +70,236 @@ public partial class index : System.Web.UI.Page
 
                 // Exécution de la commande SQL   
                 cmd.ExecuteNonQuery();
-
-
-                // Fermeture de la connexion   
+ 
                 this.connection.Close();
-                //}
-                //catch
-                //{
-                //    /*Gestion des erreurs*/
-                //    lbl_msg.Text = "Erreur lors de l'enregistrement try";
-                //    this.TextBox1.Text = "";
-                //    this.TextBox2.Text = "";
-                //    this.TextBox4.Text = "";
-                //}
+             
 
-
-                //}
-                //envoi de email
-                //recuperation
-                this.connection.Open();
-
-                //SELECT * FROM `licence_1` LIMIT 50 SELECT * FROM licence_1 l GROUP BY l.email_l1
-                cmd.CommandText = "SELECT * FROM licence_1 WHERE algebre_l1 = @1 GROUP by email_l1 ";
-                cmd.Parameters.AddWithValue("@1", 1);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-
-                while (reader.Read())
+                //1
+                //envoi email
+                if (DropDownList1.SelectedItem.Text == "Algebre")
                 {
-                    string email1 = reader.GetString("email_l1");
-
-                    Random o = new Random();
-
-
-
-                    // this.lbl_msg.Text += "<tr><td>" + reader.GetString("email_l1") +  "</td></tr>";
-                    this.lbl_msg.Text += "<tr><td>" + email1 + "</td></tr>";
+                    this.connection.Open();
+                    cmd.CommandText = "SELECT * FROM licence_1 WHERE algebre_l1 = @1 GROUP by email_l1 ";
+                    cmd.Parameters.AddWithValue("@1", 1);
+                    MySqlDataReader reader = cmd.ExecuteReader();
 
 
+                    while (reader.Read())
+                    {
+                        string email1 = reader.GetString("email_l1");
 
-                    //envoi email
-                    SmtpClient smtpClient = new SmtpClient();
-                    MailMessage mail = new MailMessage();
-                    string msg = TextBox4.Text;
+                        Random o = new Random();
 
-                    smtpClient.Host = "smtp.gmail.com";
-                    smtpClient.Port = 587;
-                    smtpClient.EnableSsl = true;
+                        this.lbl_msg.Text += "<tr><td>" + email1 + "</td></tr>";
+                        SmtpClient smtpClient = new SmtpClient();
+                        MailMessage mail = new MailMessage();
+                        string msg = TextBox4.Text;
 
-                    smtpClient.Credentials = new System.Net.NetworkCredential("orangecrack01@gmail.com", "phoenixphoenix01");
+                        smtpClient.Host = "smtp.gmail.com";
+                        smtpClient.Port = 587;
+                        smtpClient.EnableSsl = true;
 
-                    //Setting From , To and CC
-                    mail.From = new MailAddress("orangecrack01@gmail.com");
-                    mail.To.Add(email1);
+                        smtpClient.Credentials = new System.Net.NetworkCredential("orangecrack01@gmail.com", "phoenixphoenix01");
 
-                    mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
+                        //Setting From , To and CC
+                        mail.From = new MailAddress("orangecrack01@gmail.com");
+                        mail.To.Add(email1);
 
-                 //   mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\images\\ID tete.jpg"));
-                    mail.IsBodyHtml = true;
-                    mail.Subject = "ALGEBRE : " + TextBox1.Text;
-                    mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
+                        mail.IsBodyHtml = true;
+                        mail.Subject = "Licence 1 ALGEBRE : " + TextBox1.Text;
+                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
 
-                    smtpClient.Send(mail);
+                        smtpClient.Send(mail);
 
+                        email1 = email1 + o.Next(999);
 
-                    email1 = email1 + o.Next(999);
-
-
+                    }
+                    reader.Close();
                 }
 
+                //2
+                           if (DropDownList1.SelectedItem.Text == "Logique")
+                {
+                    this.connection.Open();
+                    cmd.CommandText = "SELECT * FROM licence_1 WHERE logique_l1 = @1 GROUP by email_l1 ";
+                    cmd.Parameters.AddWithValue("@1", 1);
+                    MySqlDataReader reader = cmd.ExecuteReader();
 
 
+                    while (reader.Read())
+                    {
+                        string email1 = reader.GetString("email_l1");
+
+                        Random o = new Random();
+
+                        this.lbl_msg.Text += "<tr><td>" + email1 + "</td></tr>";
+                        SmtpClient smtpClient = new SmtpClient();
+                        MailMessage mail = new MailMessage();
+                        string msg = TextBox4.Text;
+
+                        smtpClient.Host = "smtp.gmail.com";
+                        smtpClient.Port = 587;
+                        smtpClient.EnableSsl = true;
+
+                        smtpClient.Credentials = new System.Net.NetworkCredential("orangecrack01@gmail.com", "phoenixphoenix01");
+
+                        //Setting From , To and CC
+                        mail.From = new MailAddress("orangecrack01@gmail.com");
+                        mail.To.Add(email1);
+
+                        mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
+
+                        mail.IsBodyHtml = true;
+                        mail.Subject = "Logique : " + TextBox1.Text;
+                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+
+                        smtpClient.Send(mail);
+
+                        email1 = email1 + o.Next(999);
+
+                    }
+                    reader.Close();
+                }
+
+               //3
+                           if (DropDownList1.SelectedItem.Text == "Architecture")
+                {
+                    this.connection.Open();
+                    cmd.CommandText = "SELECT * FROM licence_1 WHERE architecture_l1 = @1 GROUP by email_l1 ";
+                    cmd.Parameters.AddWithValue("@1", 1);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        string email1 = reader.GetString("email_l1");
+
+                        Random o = new Random();
+
+                        this.lbl_msg.Text += "<tr><td>" + email1 + "</td></tr>";
+                        SmtpClient smtpClient = new SmtpClient();
+                        MailMessage mail = new MailMessage();
+                        string msg = TextBox4.Text;
+
+                        smtpClient.Host = "smtp.gmail.com";
+                        smtpClient.Port = 587;
+                        smtpClient.EnableSsl = true;
+
+                        smtpClient.Credentials = new System.Net.NetworkCredential("orangecrack01@gmail.com", "phoenixphoenix01");
+
+                        //Setting From , To and CC
+                        mail.From = new MailAddress("orangecrack01@gmail.com");
+                        mail.To.Add(email1);
+
+                        mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
+
+                        mail.IsBodyHtml = true;
+                        mail.Subject = "Architecture : " + TextBox1.Text;
+                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+
+                        smtpClient.Send(mail);
+
+                        email1 = email1 + o.Next(999);
+
+                    }
+                    reader.Close();
+                }
+
+                //4
+                           if (DropDownList1.SelectedItem.Text == "Analyse")
+                {
+                    this.connection.Open();
+                    cmd.CommandText = "SELECT * FROM licence_1 WHERE analyse_l1 = @1 GROUP by email_l1 ";
+                    cmd.Parameters.AddWithValue("@1", 1);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        string email1 = reader.GetString("email_l1");
+
+                        Random o = new Random();
+
+                        this.lbl_msg.Text += "<tr><td>" + email1 + "</td></tr>";
+                        SmtpClient smtpClient = new SmtpClient();
+                        MailMessage mail = new MailMessage();
+                        string msg = TextBox4.Text;
+
+                        smtpClient.Host = "smtp.gmail.com";
+                        smtpClient.Port = 587;
+                        smtpClient.EnableSsl = true;
+
+                        smtpClient.Credentials = new System.Net.NetworkCredential("orangecrack01@gmail.com", "phoenixphoenix01");
+
+                        //Setting From , To and CC
+                        mail.From = new MailAddress("orangecrack01@gmail.com");
+                        mail.To.Add(email1);
+
+                        mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
+
+                        mail.IsBodyHtml = true;
+                        mail.Subject = "Analyse : " + TextBox1.Text;
+                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+
+                        smtpClient.Send(mail);
+
+                        email1 = email1 + o.Next(999);
+
+                    }
+                    reader.Close();
+                }
+
+                //5
+                           if (DropDownList1.SelectedItem.Text == "Projet perso")
+                {
+                    this.connection.Open();
+                    cmd.CommandText = "SELECT * FROM licence_1 WHERE projet_perso_l1 = @1 GROUP by email_l1 ";
+                    cmd.Parameters.AddWithValue("@1", 1);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+
+                    while (reader.Read())
+                    {
+                        string email1 = reader.GetString("email_l1");
+
+                        Random o = new Random();
+
+                        this.lbl_msg.Text += "<tr><td>" + email1 + "</td></tr>";
+                        SmtpClient smtpClient = new SmtpClient();
+                        MailMessage mail = new MailMessage();
+                        string msg = TextBox4.Text;
+
+                        smtpClient.Host = "smtp.gmail.com";
+                        smtpClient.Port = 587;
+                        smtpClient.EnableSsl = true;
+
+                        smtpClient.Credentials = new System.Net.NetworkCredential("orangecrack01@gmail.com", "phoenixphoenix01");
+
+                        //Setting From , To and CC
+                        mail.From = new MailAddress("orangecrack01@gmail.com");
+                        mail.To.Add(email1);
+
+                        mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
+
+                        mail.IsBodyHtml = true;
+                        mail.Subject = "Projet perso : " + TextBox1.Text;
+                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+
+                        smtpClient.Send(mail);
+
+                        email1 = email1 + o.Next(999);
+
+                    }
+                    reader.Close();
+                }
 
                 //Envoi d'un message     
                 lbl_msg.Text = "Enregistrement effectue";
                 this.TextBox1.Text = "";
                 this.TextBox2.Text = "";
                 this.TextBox4.Text = "";
-
-                //Fermerture de la lecture des données
-                reader.Close();
+        
                 // Fermeture de la connexion
                 this.connection.Close();
 
