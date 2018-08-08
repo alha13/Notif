@@ -107,8 +107,8 @@ public partial class index : System.Web.UI.Page
 
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 ALGEBRE : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 1 ALGEBRE : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -151,8 +151,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Logique : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 1 Logique : " +f_name1;
+                        mail.Body = "<h2>" + f_name2+ "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -195,8 +195,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Architecture : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 1 Architecture : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -239,8 +239,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Analyse : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 1 Analyse : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -283,8 +283,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Projet perso : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 1 Projet perso : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " +f_name4;
 
                         smtpClient.Send(mail);
 
@@ -297,6 +297,7 @@ public partial class index : System.Web.UI.Page
                 //Envoi d'un message     
                 lbl_msg.Text = "Enregistrement effectue";
                 this.TextBox1.Text = "";
+                this.FileUpload1.PostedFile.FileName.Remove(1);
                 this.TextBox2.Text = "";
                 this.TextBox4.Text = "";
         
@@ -317,7 +318,7 @@ public partial class index : System.Web.UI.Page
 
 
             //        LICENCE 2 ----------------------------- debut dropcategori DropDownList1.Items.FindByValue 
-            if (DropDownList2.SelectedItem.Value == "1")
+            if (DropDownList2.SelectedItem.Value == "2")
             {
 
                 //try
@@ -327,7 +328,7 @@ public partial class index : System.Web.UI.Page
                 // Création d'une commande SQL en fonction de l'objet connection     
                 //MySqlCommand cmd = this.connection.CreateCommand();
                 // Requête SQL;
-                cmd.CommandText = "INSERT INTO notification_1 (sujet_notification_1, description_notification_1, message_notification_1, image_notification_1, categorie_notification_1) VALUES (@name1, @name2, @name4, @name5, @name6)";
+                cmd.CommandText = "INSERT INTO notification_2 (sujet_notification_2, description_notification_2, message_notification_2, image_notification_2, categorie_notification_2) VALUES (@name1, @name2, @name4, @name5, @name6)";
                 // utilisation de l'objet contact passé en paramètre   
                 cmd.Parameters.AddWithValue("@name1", f_name1);
                 cmd.Parameters.AddWithValue("@name2", f_name2);
@@ -344,17 +345,17 @@ public partial class index : System.Web.UI.Page
 
                 //1
                 //envoi email
-                if (DropDownList1.SelectedItem.Text == "Algebre")
+                if (DropDownList1.SelectedItem.Text == "PHP")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE algebre_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_2 WHERE php_l2	 = @1 GROUP by email_l2 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l2");
 
                         Random o = new Random();
 
@@ -375,8 +376,8 @@ public partial class index : System.Web.UI.Page
 
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 ALGEBRE : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 2 PHP : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -387,17 +388,17 @@ public partial class index : System.Web.UI.Page
                 }
 
                 //2
-                if (DropDownList1.SelectedItem.Text == "Logique")
+                if (DropDownList1.SelectedItem.Text == "Algebre")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE logique_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_2 WHERE algebre_l2 = @1 GROUP by email_l2 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l2");
 
                         Random o = new Random();
 
@@ -419,8 +420,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Logique : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 2 Algebre : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -431,17 +432,17 @@ public partial class index : System.Web.UI.Page
                 }
 
                 //3
-                if (DropDownList1.SelectedItem.Text == "Architecture")
+                if (DropDownList1.SelectedItem.Text == "Analyses")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE architecture_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_2 WHERE analyses_l2 = @1 GROUP by email_l2	 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l2");
 
                         Random o = new Random();
 
@@ -463,8 +464,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Architecture : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 2 Analyses : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -475,17 +476,17 @@ public partial class index : System.Web.UI.Page
                 }
 
                 //4
-                if (DropDownList1.SelectedItem.Text == "Analyse")
+                if (DropDownList1.SelectedItem.Text == "Comptabilite")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE analyse_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_2 WHERE comptabilite_l2 = @1 GROUP by email_l2 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l2");
 
                         Random o = new Random();
 
@@ -507,8 +508,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Analyse : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 2 Comptabilite : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -519,17 +520,17 @@ public partial class index : System.Web.UI.Page
                 }
 
                 //5
-                if (DropDownList1.SelectedItem.Text == "Projet perso")
+                if (DropDownList1.SelectedItem.Text == "C#")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE projet_perso_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_2 WHERE c_l2 = @1 GROUP by email_l2 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l2");
 
                         Random o = new Random();
 
@@ -551,8 +552,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Projet perso : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 2 C# : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -565,9 +566,10 @@ public partial class index : System.Web.UI.Page
                 //Envoi d'un message     
                 lbl_msg.Text = "Enregistrement effectue";
                 this.TextBox1.Text = "";
+                this.FileUpload1.PostedFile.FileName.Remove(1);
                 this.TextBox2.Text = "";
                 this.TextBox4.Text = "";
-
+               
                 // Fermeture de la connexion
                 this.connection.Close();
 
@@ -587,7 +589,7 @@ public partial class index : System.Web.UI.Page
 
 
             //        LICENCE 3 ------------------------------- debut dropcategori DropDownList1.Items.FindByValue 
-            if (DropDownList2.SelectedItem.Value == "1")
+            if (DropDownList2.SelectedItem.Value == "3")
             {
 
 
@@ -598,7 +600,7 @@ public partial class index : System.Web.UI.Page
                 // Création d'une commande SQL en fonction de l'objet connection     
                 //MySqlCommand cmd = this.connection.CreateCommand();
                 // Requête SQL;
-                cmd.CommandText = "INSERT INTO notification_1 (sujet_notification_1, description_notification_1, message_notification_1, image_notification_1, categorie_notification_1) VALUES (@name1, @name2, @name4, @name5, @name6)";
+                cmd.CommandText = "INSERT INTO notification_3 (sujet_notification_3, description_notification_3, message_notification_3, image_notification_3, categorie_notification_3) VALUES (@name1, @name2, @name4, @name5, @name6)";
                 // utilisation de l'objet contact passé en paramètre   
                 cmd.Parameters.AddWithValue("@name1", f_name1);
                 cmd.Parameters.AddWithValue("@name2", f_name2);
@@ -615,17 +617,17 @@ public partial class index : System.Web.UI.Page
 
                 //1
                 //envoi email
-                if (DropDownList1.SelectedItem.Text == "Algebre")
+                if (DropDownList1.SelectedItem.Text == "GRH")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE algebre_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_3 WHERE grh_l3 = @1 GROUP by email_l3 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l3");
 
                         Random o = new Random();
 
@@ -646,8 +648,8 @@ public partial class index : System.Web.UI.Page
 
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 ALGEBRE : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 3 GRH : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -658,24 +660,24 @@ public partial class index : System.Web.UI.Page
                 }
 
                 //2
-                if (DropDownList1.SelectedItem.Text == "Logique")
+                if (DropDownList1.SelectedItem.Text == "ISI")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE logique_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_3 WHERE isi_l3 = @1 GROUP by email_l3 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l3");
 
                         Random o = new Random();
 
                         this.lbl_msg.Text += "<tr><td>" + email1 + "</td></tr>";
                         SmtpClient smtpClient = new SmtpClient();
                         MailMessage mail = new MailMessage();
-                        string msg = TextBox4.Text;
+                      //  string msg = TextBox4.Text;
 
                         smtpClient.Host = "smtp.gmail.com";
                         smtpClient.Port = 587;
@@ -690,8 +692,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Logique : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 3 ISI : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -702,17 +704,17 @@ public partial class index : System.Web.UI.Page
                 }
 
                 //3
-                if (DropDownList1.SelectedItem.Text == "Architecture")
+                if (DropDownList1.SelectedItem.Text == "PHP")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE architecture_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_3 WHERE php_l3 = @1 GROUP by email_l3 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l3");
 
                         Random o = new Random();
 
@@ -734,8 +736,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Architecture : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 3 PHP : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -746,17 +748,17 @@ public partial class index : System.Web.UI.Page
                 }
 
                 //4
-                if (DropDownList1.SelectedItem.Text == "Analyse")
+                if (DropDownList1.SelectedItem.Text == "ASP")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE analyse_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_3 WHERE asp_l3 = @1 GROUP by email_l3 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l3");
 
                         Random o = new Random();
 
@@ -778,8 +780,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Analyse : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 3 ASP : " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4;
 
                         smtpClient.Send(mail);
 
@@ -790,17 +792,17 @@ public partial class index : System.Web.UI.Page
                 }
 
                 //5
-                if (DropDownList1.SelectedItem.Text == "Projet perso")
+                if (DropDownList1.SelectedItem.Text == "Optimisation")
                 {
                     this.connection.Open();
-                    cmd.CommandText = "SELECT * FROM licence_1 WHERE projet_perso_l1 = @1 GROUP by email_l1 ";
+                    cmd.CommandText = "SELECT * FROM licence_3 WHERE optimisation_l3 = @1 GROUP by email_l3 ";
                     cmd.Parameters.AddWithValue("@1", 1);
                     MySqlDataReader reader = cmd.ExecuteReader();
 
 
                     while (reader.Read())
                     {
-                        string email1 = reader.GetString("email_l1");
+                        string email1 = reader.GetString("email_l3");
 
                         Random o = new Random();
 
@@ -822,8 +824,8 @@ public partial class index : System.Web.UI.Page
                         mail.Attachments.Add(new System.Net.Mail.Attachment("C:\\inetpub\\wwwroot\\TD\\Notif\\" + strnamefull));
 
                         mail.IsBodyHtml = true;
-                        mail.Subject = "Licence 1 Projet perso : " + TextBox1.Text;
-                        mail.Body = "<h2>" + TextBox2.Text + "</h2>" + "<BR/> " + msg;
+                        mail.Subject = "Licence 3 Optimisation: " + f_name1;
+                        mail.Body = "<h2>" + f_name2 + "</h2>" + "<BR/> " + f_name4 ;
 
                         smtpClient.Send(mail);
 
@@ -836,9 +838,10 @@ public partial class index : System.Web.UI.Page
                 //Envoi d'un message     
                 lbl_msg.Text = "Enregistrement effectue";
                 this.TextBox1.Text = "";
+                this.FileUpload1.PostedFile.FileName.Remove(1);
                 this.TextBox2.Text = "";
                 this.TextBox4.Text = "";
-
+               
                 // Fermeture de la connexion
                 this.connection.Close();
 
