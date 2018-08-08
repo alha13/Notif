@@ -27,7 +27,6 @@
        </div>
        <div class="row" >
          <div class="container" style="text-align: center">
-             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
          <h2><b>Service de Notification par Email</b></h2>
        </div>
        </div>
@@ -178,7 +177,7 @@
             <div class="col-md-4">
 
                 <asp:TextBox ID="TextBox1" runat="server" CssClass="auto-style1" Width="216px" TextMode="Email" ></asp:TextBox>
-                <asp:Button ID="Button1" runat="server" Text="Souscrir"  style=" width: auto;" Font-Bold="True" Font-Size="Medium" OnClick="Souscrir"/>
+                <asp:Button ID="Button1" runat="server" Text="Souscrire"  style=" width: auto;" Font-Bold="True" Font-Size="Medium" OnClick="Souscrir"/>
                 <br />
                 <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="Medium" color ="red" ForeColor="Red"></asp:Label>
             </div>
