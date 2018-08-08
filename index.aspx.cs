@@ -34,7 +34,7 @@ public partial class index : System.Web.UI.Page
     protected void btn_save_Click(object sender, EventArgs e)
     {
 
-        lbl_msg.Text = "OK";
+ 
         //On recupere les variables dans le formulaires    
         string f_name1 = this.TextBox1.Text;
         string f_name2 = this.TextBox2.Text;
@@ -48,10 +48,8 @@ public partial class index : System.Web.UI.Page
      
             if (DropDownList2.SelectedItem.Value == "1" )
             {
-                DropDownList1.Items.Add(new ListItem{ Text="algebre", Value="1" });
-                DropDownList1.Items.Add(new ListItem { Text = "analyse", Value = "2" });
-                
-                lbl_msg.Text = "OK";
+                  
+              
                 try
                 {
                     // Ouverture de la connexion SQL         
@@ -102,6 +100,13 @@ public partial class index : System.Web.UI.Page
             this.TextBox2.Text = "";
             this.TextBox4.Text = "";
         }
+
+
+
+
+        //envoi de email
+        //recuperation
+
 
     }
     protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)

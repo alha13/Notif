@@ -55,7 +55,7 @@
         <asp:Label ID="Label6" runat="server" Text="Niveau :" Font-Bold="True"></asp:Label>
         <asp:DropDownList ID="DropDownList2" runat="server" style="margin-left: 31px" Height="35px" Width="188px" OnTextChanged ="DropDownList_TextChange">
             <asp:ListItem></asp:ListItem>
-            <asp:ListItem  Value="1" Text="g">Licence 1</asp:ListItem>
+            <asp:ListItem  Value="1" >Licence 1</asp:ListItem>
             <asp:ListItem Value="2">Licence 2</asp:ListItem>
             <asp:ListItem Value="3">Licence 3</asp:ListItem>
         </asp:DropDownList>
